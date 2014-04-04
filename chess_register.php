@@ -1,13 +1,9 @@
 <?php
+// Registers a new player
 
-  ////////////////////////////////////////////////////////////////////////////
-  //
-  // (c) phpChess Limited, 2004-2006, in association with Goliath Systems. 
-  // All rights reserved. Please observe respective copyrights.
-  // phpChess - Chess at its best
-  // you can find us at http://www.phpchess.com. 
-  //
-  ////////////////////////////////////////////////////////////////////////////
+// turn on display errors
+  ini_set('display_errors', 'On');
+  error_reporting(E_ALL);    
 
   define('CHECK_PHPCHESS', true);
 
@@ -148,14 +144,25 @@
     }
     $oR3DCQuery->MangeGameTimeOuts();
   }
-
+// user name
   $txtName = trim($_POST['txtName']);
+// user email
   $txtEmail = trim($_POST['txtEmail']);
+// text captcha for validation
   $txtVI = trim($_POST['txtVI']);
+// register command
   $cmdRegister = trim($_POST['cmdRegister']);
 
   $ReturnStatus = "";
   $register_success = FALSE;
+
+// For debugging
+  $bRequiresApproval = FALSE;
+  $RequiresPayment == FALSE;
+  var_dump($txtName);
+  var_dump($txtEmail);
+  var_dump($cmdRegister); 
+
 
   if($cmdRegister != "" && $txtName != "" && $txtEmail != ""){
    if (PhpCaptcha::Validate($_POST['txtVI'])) {

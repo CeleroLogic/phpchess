@@ -1,13 +1,5 @@
 <?php
-////////////////////////////////////////////////////////////////////////////////
-//
-// (c) phpChess Limited, 2004-2006, in association with Goliath Systems. 
-// All rights reserved. Please observe respective copyrights.
-// phpChess - Chess at its best
-// you can find us at http://www.phpchess.com. 
-//
-////////////////////////////////////////////////////////////////////////////////
-
+// 
   if(!defined('CHECK_PHPCHESS')){
     die("Hacking attempt");
     exit;
@@ -50,6 +42,7 @@ class CSkins{
     $this->sitename = $conf['site_name'];
 
     $this->link2 = mysql_connect($this->host, $this->user, $this->pass);
+    // Selects the database
     mysql_select_db($this->dbnm);
 
     if(!$this->link2){
@@ -110,3 +103,4 @@ class CSkins{
 
 } //end of class definition
 ?>
+  

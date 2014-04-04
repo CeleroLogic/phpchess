@@ -1,21 +1,20 @@
 <?php
 
-  ////////////////////////////////////////////////////////////////////////////
-  //
-  // (c) phpChess Limited, 2004-2006, in association with Goliath Systems. 
-  // All rights reserved. Please observe respective copyrights.
-  // phpChess - Chess at its best
-  // you can find us at http://www.phpchess.com. 
-  //
-  ////////////////////////////////////////////////////////////////////////////
 
   define('CHECK_PHPCHESS', true);
 
+// Send a raw HTTP header
   header("Content-Type: text/html; charset=utf-8");
+ 
+// creates a session 
   session_start();
+
+// turn on output buffering
   ob_start();
 
+
   $isappinstalled = 0;
+// includes and evaluates the file
   include("./includes/install_check.php");
 
   if($isappinstalled == 0){
@@ -44,17 +43,20 @@
   //Skin - standard includes
   //////////////////////////////////////////////////////////////
 
+  // Defines config macros ./skins/default/standard_cfg.php
   $SSIfile = "./skins/".$SkinName."/standard_cfg.php";
   if(file_exists($SSIfile)){
     include($SSIfile);
   }
   //////////////////////////////////////////////////////////////
-
+  // if the code from a file has already been included, it will not be included again. 
   include_once($Root_Path."bin/CR3DCQuery.php");
   require($Root_Path."bin/CTipOfTheDay.php");
   require($Root_Path."bin/CFrontNews.php");
   require($Root_Path."includes/siteconfig.php");
   require($Root_Path."includes/language.php");
+
+  // obtain username and password from POST form :w!
 
   $user = trim($_POST['txtName']);
   $pass = trim($_POST['txtPassword']);
